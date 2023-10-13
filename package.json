@@ -1,0 +1,16 @@
+{
+  "name": "tvrestaurant",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@turbo/gen": "^1.9.7",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@7.15.0"
+}

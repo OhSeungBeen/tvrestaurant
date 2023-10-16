@@ -1,0 +1,14 @@
+{
+  "name": "@tvrestaurant/ts-config",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "eslint-config-next": "^12.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "7.29.3"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@tvrestaurant/tailwind-config",
+  "version": "0.0.0",
+  "files": [
+    "tailwind.config.js"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.0.23",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31"
+  }
+}

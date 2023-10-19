@@ -1,0 +1,36 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "clean": "rm -rf .turbo node_modules"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.36.1",
+    "@ts-rest/react-query": "^3.30.4",
+    "@tvrestaurant/contracts": "workspace:*",
+    "@tvrestaurant/ui": "workspace:*",
+    "axios": "^1.5.1",
+    "next": "^13.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zod": "^3.22.2",
+    "zustand": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tanstack/react-query-devtools": "^4.36.1",
+    "@tvrestaurant/eslint-nextjs-config": "workspace:*",
+    "@tvrestaurant/prettier-config": "workspace:*",
+    "@tvrestaurant/tailwind-config": "workspace:*",
+    "@tvrestaurant/ts-config": "workspace:*",
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "prettier-plugin-tailwindcss": "^0.1.7",
+    "typescript": "^4.5.3"
+  }
+}

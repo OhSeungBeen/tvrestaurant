@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
 const environment = z.enum(['development', 'production']);
-type Envrionment = z.infer<typeof environment>;
+type Environment = z.infer<typeof environment>;
 
-const appEnv = (process.env.NODE_ENV as Envrionment) || 'development';
+const appEnv = (process.env.NODE_ENV as Environment) || 'development';
 
 const envSchema = z.object({
   appEnv: environment,

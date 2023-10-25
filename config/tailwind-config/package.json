@@ -4,7 +4,6 @@
   "files": [
     "tailwind.config.js"
   ],
-  "license": "MIT",
   "devDependencies": {
     "tailwindcss": "^3.0.23",
     "autoprefixer": "^10.4.16",

@@ -1,14 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": ["NODE_ENV", "NEXT_PUBLIC_API_URL"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"]
     },
-    "clean": {
-      "cache": false
-    },
-    "lint": {},
     "dev": {
       "cache": false,
       "persistent": true
@@ -18,6 +14,10 @@
     },
     "db:push": {
       "cache": false
-    }
+    },
+    "clean": {
+      "cache": false
+    },
+    "lint": {}
   }
 }

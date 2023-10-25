@@ -7,14 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rm -rf .turbo node_modules"
+    "clean": "rm -rf .turbo .next node_modules"
   },
   "dependencies": {
     "@next/font": "^13.5.6",
     "@tanstack/react-query": "^4.36.1",
     "@ts-rest/react-query": "^3.30.4",
-    "@tvrestaurant/contracts": "workspace:*",
-    "@tvrestaurant/ui": "workspace:*",
     "axios": "^1.5.1",
     "next": "^13.4.1",
     "react": "^18.2.0",
@@ -24,7 +22,7 @@
   },
   "devDependencies": {
     "@tanstack/react-query-devtools": "^4.36.1",
-    "@tvrestaurant/eslint-nextjs-config": "workspace:*",
+    "@tvrestaurant/eslint-config-nextjs": "workspace:*",
     "@tvrestaurant/prettier-config": "workspace:*",
     "@tvrestaurant/tailwind-config": "workspace:*",
     "@tvrestaurant/ts-config": "workspace:*",

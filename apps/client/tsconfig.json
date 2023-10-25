@@ -11,7 +11,7 @@
       "@public/*": ["./src/public/*"],
       "@stores/*": ["./src/stores/*"],
       "@styles/*": ["./src/styles/*"],
-      "@types/*": ["./src/styles/*"],
+      "@types/*": ["./src/types/*"],
       "@/*": ["./src/*"]
     }
   },

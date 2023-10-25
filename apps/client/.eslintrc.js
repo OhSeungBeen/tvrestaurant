@@ -1,1 +1,4 @@
-module.exports = require('@tvrestaurant/eslint-nextjs-config');
+module.exports = {
+  root: true,
+  extends: ['@tvrestaurant/eslint-config-nextjs'],
+};

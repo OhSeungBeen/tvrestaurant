@@ -8,9 +8,9 @@ module.exports = {
   plugins: ['simple-import-sort'],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
-    'no-console': 'warn',
     'simple-import-sort/imports': 'warn',
     'simple-import-sort/exports': 'warn',
+    'no-console': 'warn',
   },
   overrides: [
     {

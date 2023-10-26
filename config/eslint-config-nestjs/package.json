@@ -1,16 +1,17 @@
 {
-  "name": "@tvrestaurant/eslint-config-nest",
+  "name": "@tvrestaurant/eslint-config-nestjs",
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf node_modules"
   },
   "dependencies": {
-    "eslint": "^8.0.1",
-    "eslint-config-turbo": "^1.9.3",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
-    "eslint-plugin-prettier": "^4.0.0"
+    "eslint": "^8.0.1",
+    "eslint-config-turbo": "^1.9.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0"
   },
   "publishConfig": {
     "access": "public"

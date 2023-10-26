@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { env } from '@/env';
 import { initQueryClient } from '@ts-rest/react-query';
-import { router } from '@tvrestaurant/contracts/src/index';
+import { router } from '@tvrestaurant/contracts';
 
 const baseURL = env.apiUrl;
 

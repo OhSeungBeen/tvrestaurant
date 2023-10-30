@@ -3,9 +3,10 @@
   "globalEnv": ["NODE_ENV", "NEXT_PUBLIC_API_URL", "APP_HOST", "APP_PORT"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^db:generate", "^build"]
     },
     "dev": {
+      "dependsOn": ["^db:generate"],
       "cache": false,
       "persistent": true
     },

@@ -5,6 +5,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "db:generate": "turbo run db:generate",
+    "db:push": "turbo run db:push",
     "clean": "turbo run clean && rm -rf node_modules",
     "lint": "turbo run lint"
   },

@@ -6,7 +6,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "clean": "rm -rf .turbo .next node_modules dist"
+    "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
     "@ts-rest/core": "^3.30.4",

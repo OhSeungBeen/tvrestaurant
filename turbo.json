@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["NODE_ENV", "NEXT_PUBLIC_API_URL", "APP_HOST", "APP_PORT"],
+  "globalEnv": ["NODE_ENV", "NEXT_PUBLIC_API_HOST", "APP_HOST", "APP_PORT"],
   "pipeline": {
     "build": {
       "dependsOn": ["^db:generate", "^build"]

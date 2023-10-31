@@ -4,15 +4,15 @@ import { env } from '@/env';
 import { initQueryClient } from '@ts-rest/react-query';
 import { router } from '@tvrestaurant/contracts';
 
-const baseURL = env.apiUrl;
+const baseUrl = env.apiHost;
 
 export const defaultAxios = axios.create({
-  baseURL,
+  baseURL: baseUrl,
   withCredentials: true,
 });
 
-export const client = initQueryClient(router, {
-  baseUrl: baseURL,
+export const apiClient = initQueryClient(router, {
+  baseUrl,
   baseHeaders: {
     'Content-Type': 'application/json',
   },

@@ -7,10 +7,10 @@ const appEnv = (process.env.NODE_ENV as Environment) || 'development';
 
 const envSchema = z.object({
   appEnv: environment,
-  apiUrl: z.string(),
+  apiHost: z.string(),
 });
 
 export const env = envSchema.parse({
   appEnv,
-  apiUrl: process.env.NEXT_PUBLIC_API_URL,
+  apiHost: process.env.NEXT_PUBLIC_API_HOST,
 });

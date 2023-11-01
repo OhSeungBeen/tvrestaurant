@@ -5,13 +5,16 @@
     "baseUrl": "./",
     "paths": {
       "@app/*": ["./src/app/*"],
+      "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/constants/*"],
+      "@features/*": ["./src/features/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@lib/*": ["./src/lib/*"],
       "@providers/*": ["./src/providers/*"],
-      "@public/*": ["./src/public/*"],
       "@stores/*": ["./src/stores/*"],
       "@styles/*": ["./src/styles/*"],
       "@types/*": ["./src/types/*"],
+      "public/*": ["./public/*"],
       "@/*": ["./src/*"]
     }
   },

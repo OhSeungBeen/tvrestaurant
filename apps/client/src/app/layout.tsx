@@ -1,7 +1,11 @@
+'use client';
+
 import { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 
 import { env } from '@/env';
-import { firaMono, notoSansKr } from '@lib/fonts/google';
+import { firaMono } from '@lib/fonts/google';
+import { pretendard } from '@lib/fonts/local';
 import ReactQueryProvider from '@providers/ReactQueryProvider';
 
 import '@styles/global.css';
@@ -54,9 +58,11 @@ type Props = {
 
 export default function RootLayout({ children }: Props) {
   return (
-    <html lang="ko" className={`${notoSansKr.className} ${firaMono.variable}`}>
+    <html lang="ko" className={`${pretendard.className} ${firaMono.variable}`}>
       <body>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <ThemeProvider attribute="class">{children}</ThemeProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

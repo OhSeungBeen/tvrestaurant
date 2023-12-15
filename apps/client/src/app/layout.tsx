@@ -2,6 +2,7 @@ import { cache } from 'react';
 import { Metadata } from 'next';
 
 import { env } from '@/env';
+import Toast from '@components/Toast';
 import { firaMono } from '@lib/fonts/google';
 import { pretendard } from '@lib/fonts/local';
 import ReactQueryProvider from '@providers/ReactQueryProvider';
@@ -66,7 +67,10 @@ export default function RootLayout({ children }: Props) {
     <html lang="ko" className={`${pretendard.className} ${firaMono.variable}`}>
       <body className="text-slate-800 dark:text-slate-100">
         <ReactQueryProvider dehydratedState={dehydratedState}>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <Toast />
+            {children}
+          </ThemeProvider>
         </ReactQueryProvider>
       </body>
     </html>

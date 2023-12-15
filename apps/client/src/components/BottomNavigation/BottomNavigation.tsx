@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -11,7 +10,7 @@ import {
   IoSearchOutline,
 } from 'react-icons/io5';
 
-const BottomNavigation = () => {
+export default function BottomNavigation() {
   const path = usePathname();
 
   const navigationMenus = [
@@ -47,29 +46,21 @@ const BottomNavigation = () => {
     },
   ];
 
+  const isActiveMenu = (navigationMenuPath) =>
+    (navigationMenuPath === '/' && path === '/') ||
+    (navigationMenuPath !== '/' && path.startsWith(navigationMenuPath));
+
   return (
     <ul className="fixed bottom-0 flex h-16 w-full items-center justify-between rounded-t-3xl  bg-slate-50 px-8  dark:bg-slate-800 sm:max-w-md">
       {navigationMenus.map((navigationMenu) => {
-        const navigationMenuColorMap = {
-          normal: 'text-pink-500 dark:text-pink-400',
-          active: 'text-slate-700 dark:text-white',
-        };
-        let navigationMenuColor = '';
-        if (navigationMenu.path === '/') {
-          navigationMenuColor =
-            path === navigationMenu.path
-              ? navigationMenuColorMap.normal
-              : navigationMenuColorMap.active;
-        } else {
-          navigationMenuColor = path.startsWith(navigationMenu.path)
-            ? navigationMenuColorMap.normal
-            : navigationMenuColorMap.active;
-        }
         return (
           <li key={navigationMenu.id}>
             <Link
               href={navigationMenu.path}
-              className={`flex flex-col items-center justify-center ${navigationMenuColor}`}
+              className={`flex flex-col items-center justify-center ${
+                isActiveMenu(navigationMenu.path) &&
+                'text-pink-500 dark:text-pink-400'
+              }`}
             >
               <div>{navigationMenu.icon}</div>
               <div className="text-sm">{navigationMenu.name}</div>
@@ -79,6 +70,4 @@ const BottomNavigation = () => {
       })}
     </ul>
   );
-};
-
-export default BottomNavigation;
+}

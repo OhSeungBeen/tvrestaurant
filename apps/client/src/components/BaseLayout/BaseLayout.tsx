@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useScrollDirection } from 'react-use-scroll-direction';
 
 import BottomNavigation from '@components/BottomNavigation';
@@ -10,7 +10,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const BaseLayout = ({ children }: Props) => {
+export default function BaseLayout({ children }: Props) {
   const [isVisibleNavigation, setIsVisibleNavigation] = useState<boolean>(true);
   const { scrollDirection, scrollTargetRef } = useScrollDirection();
 
@@ -35,6 +35,4 @@ const BaseLayout = ({ children }: Props) => {
       </div>
     </div>
   );
-};
-
-export default BaseLayout;
+}

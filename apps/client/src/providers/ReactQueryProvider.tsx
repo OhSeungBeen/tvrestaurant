@@ -1,7 +1,14 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useApiError } from '@hooks/useApiError';
+import {
+  DehydratedState,
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const ReactQueryDevtoolsProduction = React.lazy(() =>
@@ -13,29 +20,47 @@ const ReactQueryDevtoolsProduction = React.lazy(() =>
 );
 
 type Props = {
+  dehydratedState: DehydratedState;
   children: React.ReactNode;
 };
 
-const ReactQueryProvider = ({ children }: Props) => {
+export default function ReactQueryProvider({
+  dehydratedState,
+  children,
+}: Props) {
   const [showDevtools, setShowDevtools] = useState(false);
-  const queryClient = new QueryClient();
 
   useEffect(() => {
     // @ts-ignore
     window.toggleDevtools = () => setShowDevtools((old) => !old);
   }, []);
 
+  const { handleError } = useApiError();
+
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        retry: false,
+        onError: handleError,
+      },
+      mutations: {
+        onError: handleError,
+      },
+    },
+  });
+
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
-      <ReactQueryDevtools initialIsOpen />
-      {showDevtools && (
-        <React.Suspense fallback={null}>
-          <ReactQueryDevtoolsProduction />
-        </React.Suspense>
-      )}
+      <Hydrate state={dehydratedState}>
+        <ReactQueryDevtools initialIsOpen />
+        {showDevtools && (
+          <React.Suspense fallback={null}>
+            <ReactQueryDevtoolsProduction />
+          </React.Suspense>
+        )}
+        {children}
+      </Hydrate>
     </QueryClientProvider>
   );
-};
-
-export default ReactQueryProvider;
+}

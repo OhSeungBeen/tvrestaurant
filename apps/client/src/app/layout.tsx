@@ -1,12 +1,12 @@
-'use client';
-
+import { cache } from 'react';
 import { Metadata } from 'next';
-import { ThemeProvider } from 'next-themes';
 
 import { env } from '@/env';
 import { firaMono } from '@lib/fonts/google';
 import { pretendard } from '@lib/fonts/local';
 import ReactQueryProvider from '@providers/ReactQueryProvider';
+import ThemeProvider from '@providers/ThemeProvider';
+import { dehydrate, QueryClient } from '@tanstack/react-query';
 
 import '@styles/global.css';
 
@@ -56,12 +56,17 @@ type Props = {
   children: React.ReactNode;
 };
 
+const getQueryClient = cache(() => new QueryClient());
+
 export default function RootLayout({ children }: Props) {
+  const queryClient = getQueryClient();
+  const dehydratedState = dehydrate(queryClient);
+
   return (
     <html lang="ko" className={`${pretendard.className} ${firaMono.variable}`}>
-      <body>
-        <ReactQueryProvider>
-          <ThemeProvider attribute="class">{children}</ThemeProvider>
+      <body className="text-slate-800 dark:text-slate-100">
+        <ReactQueryProvider dehydratedState={dehydratedState}>
+          <ThemeProvider>{children}</ThemeProvider>
         </ReactQueryProvider>
       </body>
     </html>

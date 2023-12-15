@@ -4,7 +4,7 @@ import { env } from '@/env';
 import { initQueryClient } from '@ts-rest/react-query';
 import { router } from '@tvrestaurant/contracts';
 
-const baseUrl = env.apiHost;
+const baseUrl = env.appServerUrl;
 
 export const defaultAxios = axios.create({
   baseURL: baseUrl,

@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '내 주변 맛집, 티비레스토랑',
     description: '반가워요! 링크를 확인해주세요 :-)',
-    images: [`${env.appHost}/og`],
+    images: [`${env.appUrl}/og`],
   },
   other: {
     'format-detection': 'telephone=no, date=no, email=no, address=no',

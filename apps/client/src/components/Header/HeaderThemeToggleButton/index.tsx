@@ -1,1 +1,1 @@
-export { default } from './HedaerThemeToggleButton';
+export { default } from './HeaderThemeToggleButton';

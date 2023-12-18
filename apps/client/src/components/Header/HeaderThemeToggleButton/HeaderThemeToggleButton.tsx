@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { AnimatePresence } from 'framer-motion';
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 
-const HeaderThemeToggleButton = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+import { useIsMounted } from '@toss/react';
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+export default function HeaderThemeToggleButton() {
+  const { theme, setTheme } = useTheme();
+  const isMounted = useIsMounted();
 
   const onToggleTheme = () => {
     if (theme === 'light') {
@@ -19,7 +18,7 @@ const HeaderThemeToggleButton = () => {
     return setTheme('light');
   };
 
-  if (!mounted) {
+  if (!isMounted) {
     return null;
   }
 
@@ -33,15 +32,10 @@ const HeaderThemeToggleButton = () => {
         exit={{ y: -10, opacity: 0 }}
         transition={{ duration: 0.2 }}
       >
-        <div
-          className="cursor-pointer text-2xl text-slate-700 dark:text-white"
-          onClick={onToggleTheme}
-        >
+        <div className="cursor-pointer text-2xl" onClick={onToggleTheme}>
           {theme === 'dark' ? <BsFillMoonStarsFill /> : <BsFillSunFill />}
         </div>
       </motion.div>
     </AnimatePresence>
   );
-};
-
-export default HeaderThemeToggleButton;
+}

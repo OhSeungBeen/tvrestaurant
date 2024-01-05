@@ -6,3 +6,55 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model EmailAuth {
+  id       String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  email    String
+  code     String   @unique
+  logged   Boolean  @default(false)
+  createAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updateAt DateTime @default(now()) @updatedAt @map("update_at") @db.Timestamptz(6)
+
+  @@map("email_auth")
+}
+
+model User {
+  id            String         @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  email         String         @unique
+  createAt      DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+  updateAt      DateTime       @default(now()) @updatedAt @map("update_at") @db.Timestamptz(6)
+  socialAccount SocialAccount?
+  userProfile   UserProfile?
+
+  @@map("user")
+}
+
+model UserProfile {
+  id        String  @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  userId    String  @unique @db.Uuid
+  nickName  String  @unique @map("nick_name")
+  thumbnail String? @map("thumbnail")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_profile")
+}
+
+model SocialAccount {
+  id       String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  userId   String   @unique @db.Uuid
+  socialId String   @unique
+  provider Provider
+  createAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updateAt DateTime @default(now()) @updatedAt @map("update_at") @db.Timestamptz(6)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([socialId, provider])
+  @@map("social_account")
+}
+
+enum Provider {
+  KAKAO
+  NAVER
+  GOOGLE
+}

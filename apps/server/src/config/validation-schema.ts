@@ -1,0 +1,25 @@
+import * as Joi from 'joi';
+
+export const validationSchema = Joi.object({
+  APP_HOST: Joi.string().required(),
+  APP_PORT: Joi.number().required(),
+  APP_URL: Joi.string().required(),
+  APP_CLIENT_HOST: Joi.string().required(),
+  APP_CLIENT_PORT: Joi.number().required(),
+  APP_CLIENT_URL: Joi.string().required(),
+  APP_CDN_URL: Joi.string().required(),
+  EMAIL_HOST: Joi.string().required(),
+  EMAIL_USER: Joi.string().required(),
+  EMAIL_SECRET: Joi.string().required(),
+  JWT_SECRET: Joi.string().required(),
+  JWT_REFRESH_SECRET: Joi.string().required(),
+  KAKAO_CLIENT_ID: Joi.string().required(),
+  GOOGLE_CLIENT_ID: Joi.string().required(),
+  GOOGLE_CLIENT_SECRET: Joi.string().required(),
+  NAVER_CLIENT_ID: Joi.string().required(),
+  NAVER_CLIENT_SECRET: Joi.string().required(),
+  AWS_REGION: Joi.string().required(),
+  AWS_BUCKET_NAME: Joi.string().required(),
+  AWS_S3_ACCESS_KEY: Joi.string().required(),
+  AWS_S3_SECRET_ACCESS_KEY: Joi.string().required(),
+});

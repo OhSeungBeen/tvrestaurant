@@ -1,10 +1,12 @@
 import { cache } from 'react';
 import { Metadata } from 'next';
+import { cookies } from 'next/headers';
 
 import { env } from '@/env';
 import Toast from '@components/Toast';
 import { firaMono } from '@lib/fonts/google';
 import { pretendard } from '@lib/fonts/local';
+import AuthProvider from '@providers/AuthProvider';
 import ReactQueryProvider from '@providers/ReactQueryProvider';
 import ThemeProvider from '@providers/ThemeProvider';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
@@ -57,9 +59,13 @@ type Props = {
   children: React.ReactNode;
 };
 
-const getQueryClient = cache(() => new QueryClient());
+export const getQueryClient = cache(() => new QueryClient());
 
 export default function RootLayout({ children }: Props) {
+  const cookieStore = cookies();
+  const isLoggedIn =
+    !!cookieStore.get('access_token') || !!cookieStore.get('refresh_token');
+
   const queryClient = getQueryClient();
   const dehydratedState = dehydrate(queryClient);
 
@@ -68,8 +74,10 @@ export default function RootLayout({ children }: Props) {
       <body className="text-slate-800 dark:text-slate-100">
         <ReactQueryProvider dehydratedState={dehydratedState}>
           <ThemeProvider>
-            <Toast />
-            {children}
+            <AuthProvider isLoggedIn={isLoggedIn}>
+              <Toast />
+              {children}
+            </AuthProvider>
           </ThemeProvider>
         </ReactQueryProvider>
       </body>

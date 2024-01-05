@@ -2,18 +2,18 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['turbo', '@typescript-eslint/eslint-plugin', 'simple-import-sort'],
   extends: [
     'turbo',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
+    'plugin:prettier/recommended'
   ],
   root: true,
   env: {
     node: true,
-    jest: true,
+    jest: true
   },
   ignorePatterns: ['.eslintrc.js', '**/*.js'],
   rules: {
@@ -23,7 +23,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
-    'no-console': 'warn',
+    'no-console': 'warn'
   },
   overrides: [
     {
@@ -38,11 +38,11 @@ module.exports = {
               ['^~'],
               ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
               ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-              ['^\\u0000'],
-            ],
-          },
-        ],
-      },
-    },
-  ],
+              ['^\\u0000']
+            ]
+          }
+        ]
+      }
+    }
+  ]
 };

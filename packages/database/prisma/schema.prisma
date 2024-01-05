@@ -30,10 +30,12 @@ model User {
 }
 
 model UserProfile {
-  id        String  @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  userId    String  @unique @map("user_id") @db.Uuid
-  nickName  String  @unique @map("nick_name")
-  thumbnail String? @map("thumbnail")
+  id        String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  userId    String   @unique @map("user_id") @db.Uuid
+  nickName  String   @unique @map("nick_name")
+  thumbnail String?  @map("thumbnail")
+  createAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updateAt  DateTime @default(now()) @updatedAt @map("update_at") @db.Timestamptz(6)
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 

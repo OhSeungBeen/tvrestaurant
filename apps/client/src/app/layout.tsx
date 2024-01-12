@@ -1,6 +1,7 @@
 import { cache } from 'react';
 import { Metadata } from 'next';
 import { cookies } from 'next/headers';
+import Script from 'next/script';
 
 import { env } from '@/env';
 import Toast from '@components/Toast';
@@ -71,6 +72,12 @@ export default function RootLayout({ children }: Props) {
 
   return (
     <html lang="ko" className={`${pretendard.className} ${firaMono.variable}`}>
+      <head>
+        <Script
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${env.kakaoApiKey}&libraries=services,clusterer&autoload=false`}
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className="text-slate-800 dark:text-slate-100">
         <ReactQueryProvider dehydratedState={dehydratedState}>
           <ThemeProvider>

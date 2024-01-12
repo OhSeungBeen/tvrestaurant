@@ -13,6 +13,7 @@ const envSchema = z.object({
   appServerHost: z.string(),
   appServerPort: z.number(),
   appServerUrl: z.string(),
+  kakaoApiKey: z.string(),
 });
 
 export const env = envSchema.parse({
@@ -23,4 +24,5 @@ export const env = envSchema.parse({
   appServerHost: process.env.NEXT_PUBLIC_APP_SERVER_HOST,
   appServerPort: parseInt(process.env.NEXT_PUBLIC_APP_SERVER_PORT, 10),
   appServerUrl: process.env.NEXT_PUBLIC_APP_SERVER_URL,
+  kakaoApiKey: process.env.NEXT_PUBLIC_KAKAO_API_KEY,
 });

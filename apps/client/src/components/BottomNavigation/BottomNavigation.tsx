@@ -51,7 +51,7 @@ export default function BottomNavigation() {
     (navigationMenuPath !== '/' && path.startsWith(navigationMenuPath));
 
   return (
-    <ul className="fixed bottom-0 flex h-16 w-full items-center justify-between rounded-t-3xl  bg-slate-50 px-8  dark:bg-slate-800 sm:max-w-md">
+    <ul className="fixed bottom-0 z-20 flex h-16 w-full items-center justify-between  rounded-t-3xl bg-slate-50  px-8 dark:bg-slate-800 sm:max-w-md">
       {navigationMenus.map((navigationMenu) => {
         return (
           <li key={navigationMenu.id}>
